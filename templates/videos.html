@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <h2><a href="/cat">Videos</a> / Cat Name</h2>
+  <hr>
+    {% for vids in vids %}
+      <div class="border-box ib">
+        <div class="thumb-box">
+          <a href="/video_player/{{vids.vid_id}}/">
+            <img src="http://localhost/gal/thumb/{{vids.vid_title}}.jpg">
+          </a>
+            <div class="desc">{{vids.vid_name}}<br><font weight="bold" color="#ff0000">[{{vids.vid_views}}]</font></div>
+          </div>
+        </div>
+    {% endfor %}
+  <hr>
+  <a href="/cat" class="btn btn-primary">Catagories</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <h1>Dashboard</h1>
+  <h5>Welcome {{session.username}} what would you like to do?</h5>
+  <hr>
+  <div class="btn-group float-left">
+    <a class="btn btn-primary" href="/man_users">User Management</a>
+    <a class="btn btn-primary" href="/man_cat">Catagory Management</a>
+    <a class="btn btn-primary" href="/add_video">Upload Video</a>
+  </div>
+
+{% endblock %}

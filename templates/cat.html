@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <h1>Video Catagories</h1>
+
+  {% for cats in cats %}
+    <div class="border-box ib">
+      <div class="thumb-box">
+        <a href="/videos/{{cats.cat_id}}/">
+          <img src="http://localhost/images/thumb/{{cats.cat_thumb}}.jpg">
+        </a>
+          <div class="desc">{{cats.cat_name}}</div>
+        </div>
+      </div>
+  {% endfor %}
+{% endblock %}

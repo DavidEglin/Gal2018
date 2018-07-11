@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gal 2018</title>
+    <link rel="stylesheet" href="http://localhost/css/bootstrap.min.css">
+    <script src="http://localhost/js/jquery.min.js"></script>
+
+    <style>
+
+    div.button_width {
+      width: 250px;
+    }
+
+    div.border-box {
+      border: 0px;
+      padding: 5px;
+    }
+
+    div.thumb-box {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    div.video-box {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 100%;
+        height: auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    div.thumb-box video {
+      padding: 15px
+    }
+
+    div.video-box video {
+      padding: 15px
+    }
+
+    div.thumb-box:hover {
+        border: 1px solid #777;
+    }
+
+    .ib {
+      display: inline-block;
+      border: 1px solid #ccc;
+      padding: 4px;
+    }
+
+    div.thumb-box img {
+        width: 250px;
+        border-radius: 8px;
+        height: auto;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+      }
+
+  </style>
+  </head>
+  <body>
+    {% include 'includes/_navbar.html' %}
+    <div class="container">
+      <br><br><br>
+      {% include 'includes/_messages.html' %}
+      {% block body %}
+      {% endblock %}
+    </div>
+    <script src="http://localhost/js/bootstrap.min.js"></script>
+  </body>
+
+</html>

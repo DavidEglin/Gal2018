@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>File Uploaded</h1>
+<h2>Filename: {{ filename }}</h2>
+<h2>Vieoname: {{ videoname }}</h2>
+<h2>Catagory: {{ cat.cat_name }} (ID - {{ videocat }})</h2>
+<h2>Record ID: {{ lastrow }}</h2>
+<div>
+  <a class="btn btn-primary" href="/dashboard">Dashboard</a>
+</div>
+
+{% endblock %}

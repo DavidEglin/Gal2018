@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Current Users</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Username</th>
+      <th></th>
+      <th></th>
+    </tr>
+  {% for users in users %}
+      <tr>
+        <td>{{users.users_id}}</td>
+        <td>{{users.users_name}}</td>
+        <td>{{users.users_username}}</td>
+        <td><a href="edit_users/{{users.users_id}}" class="btn btn-warning pullright">Edit</a></td>
+        <td>
+          <form class="" action="{{url_for('del_users', users_id=users.users_id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger pullright">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  <hr>
+  <div class="float-right">
+    <a href="register" class="btn btn-primary">Add User</a>
+  </div>
+  <div class="float-left">
+    <a href="dashboard" class="btn btn-success">Dashboard</a>
+  </div>
+{% endblock %}

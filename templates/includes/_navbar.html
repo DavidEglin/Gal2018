@@ -1,0 +1,25 @@
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Gal 2018</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
+          <li class="nav-item active"><a class="nav-link" href=/about>About</a></li>
+          {% if session.logged_in %}
+            <li class="nav-item active"><a class="nav-link" href=/cat>Catagories</a></li>
+          {% else %}
+          {% endif %}
+        </ul>
+        <ul class="nav-item active navbar-nav navbar-right">
+          {% if session.logged_in %}
+            <li><a class="nav-link active" href="/dashboard">Dashboard</a></li>
+            <li><a class="nav-link active" href="/logout">Logout</a></li>
+          {% else %}
+            <li><a class="nav-link active" href="/login">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>

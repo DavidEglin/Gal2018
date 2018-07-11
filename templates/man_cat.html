@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Edit Catagories</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Catagory Name</th>
+      <th>Hidden</th>
+      <th></th>
+      <th></th>
+    </tr>
+  {% for cats in cats %}
+      <tr>
+        <td>{{cats.cat_id}}</td>
+        <td>{{cats.cat_name}}</td>
+        <td>{{cats.cat_hidden}}</td>
+        <td><a href="edit_cat/{{cats.cat_id}}" class="btn btn-warning pullright">Edit</a></td>
+        <td>
+          <form class="" action="{{url_for('del_cat', cat_id=cats.cat_id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger pullright">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  <hr>
+  <div class="float-right">
+    <a href="add_cat" class="btn btn-primary">Add Catagory</a>
+  </div>
+  <div class="float-left">
+    <a href="dashboard" class="btn btn-success">Dashboard</a>
+  </div>
+{% endblock %}

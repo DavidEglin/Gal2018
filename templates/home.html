@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <br><br><br>
+
+  <div class="jumbotron text-center">
+    <h1>Welcome to Gal 2018</h1>
+    <p class="lead">Some Junk!</p>
+      {% if session.logged_in == NULL %}
+        <a href="/login" class="btn btn-success">Login</a>
+      {% endif %}
+  </div>
+{% endblock %}
