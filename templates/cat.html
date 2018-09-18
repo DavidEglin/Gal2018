@@ -8,7 +8,7 @@
     <div class="border-box ib">
       <div class="thumb-box">
         <a href="/videos/{{cats.cat_id}}/">
-          <img src="http://localhost/images/thumb/{{cats.cat_thumb}}.jpg">
+          <img src="{{url_for('static', filename='images/') }}{{cats.cat_thumb}}.jpg">
         </a>
           <div class="desc">{{cats.cat_name}}</div>
         </div>

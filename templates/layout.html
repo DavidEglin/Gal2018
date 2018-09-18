@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Gal 2018</title>
-    <link rel="stylesheet" href="http://localhost/css/bootstrap.min.css">
-    <script src="http://localhost/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
     <style>
 
@@ -70,7 +70,7 @@
       {% block body %}
       {% endblock %}
     </div>
-    <script src="http://localhost/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js') }}"></script>
   </body>
 
 </html>

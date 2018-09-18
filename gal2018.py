@@ -7,14 +7,15 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 
 app = Flask(__name__)
+app.secret_key = "hkjlasdfbblasdkjgasdfgqowerqbfaosdfiuy7896"
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Config mysql
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'D!sc0dave'
-app.config['MYSQL_DB'] = 'gal'
+app.config['MYSQL_PASSWORD'] = 'd9*g1v!'
+app.config['MYSQL_DB'] = 'gal2018'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # init_mysql
@@ -49,7 +50,7 @@ def cat():
     cur = mysql.connection.cursor()
 
     #Get catagories
-    result = cur.execute("SELECT * FROM cat")
+    result = cur.execute("SELECT * FROM cat WHERE cat_hidden=0")
 
     cats = cur.fetchall()
 
@@ -66,7 +67,7 @@ def videos(cat_id):
     cur = mysql.connection.cursor()
 
     #Get videos
-    result = cur.execute("SELECT * FROM video INNER JOIN cat ON cat.cat_id = video.vid_cat_id WHERE cat.cat_id= %s ORDER BY video.vid_views DESC", [cat_id])
+    result = cur.execute("SELECT * FROM video INNER JOIN cat ON cat.cat_id = video.vid_cat_id WHERE cat.cat_id= %s AND video.vid_hidden='0' ORDER BY video.vid_views DESC", [cat_id])
 
     vids = cur.fetchall()
 
@@ -409,6 +410,7 @@ def add_video():
 
     return render_template('upload.html', cat=cat)
 
+#Video Upload Page
 @app.route("/upload", methods=['POST'])
 @is_logged_in
 def upload():
@@ -497,16 +499,16 @@ def edit_video(vid_id):
     form = VideoUploadForm(request.form)
 
     #Populate Form fields
-    form.videoname.data = video['vid_name']
+    form.videotitle.data = video['vid_title']
 
     if request.method == 'POST'and form.validate():
-        videoname = request.form['vid_name']
+        videotitle = request.form['vid_title']
 
         #create cursor
         cur = mysql.connection.cursor()
 
         #execute Query
-        cur.execute("UPDATE video SET vid_name=%s, vid_cat_id=%s WHERE vid_id=%s",(videoname, cat_id))
+        cur.execute("UPDATE video SET vid_title=%s, vid_cat_id=%s WHERE vid_id=%s",(videotitle, cat_id))
 
         #Commit to DB
         mysql.connection.commit()
@@ -520,5 +522,5 @@ def edit_video(vid_id):
     return render_template("edit_video.html", form = form, cat = cat )
 
 if __name__ == '__main__':
-    app.secret_key='HJSUHEB1387HDKApo0876HGTShsnnh'
-    app.run(debug=True)
+    app.debug = True
+    app.run()

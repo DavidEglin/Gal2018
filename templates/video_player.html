@@ -2,14 +2,14 @@
 
 {% block body %}
   <div class="border-box">
-    <h2><a href="/cat">Videos</a> / <a href="/videos/{{video.cat_id}}">{{video.cat_name}}</a> / {{video.vid_name}}</h2>
+    <h2><a href="/cat">Videos</a> / <a href="/videos/{{video.cat_id}}">{{video.cat_name}}</a> / {{video.vid_title}}</h2>
     {% if session.logged_in %}
     <a href="/edit_video/{{video.vid_id}}" class="btn btn-warning float-right">Edit Video</a>
     {% else %}
     {% endif %}
       <div class="video-box">
         <video width="100%" controls autoplay>
-          <source src="http://localhost/gal/video/{{video.vid_title}}.mp4" type="video/mp4">
+          <source src="{{url_for('static', filename='video/') }}{{video.vid_name}}.mp4" type="video/mp4">
         </video>
       </div>
   </div>
