@@ -392,7 +392,7 @@ def man_cat():
 
 #Video Upload Form Class
 class VideoUploadForm(Form):
-    videoname = StringField('Name', [validators.Length(min=1, max=75)])
+    videotitle = StringField('Title', [validators.Length(min=1, max=75)])
     videocat = SelectField('cat_id'), [validators.length(min=1, max=10)]
 
 @app.route("/add_video")
